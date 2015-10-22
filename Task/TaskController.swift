@@ -22,6 +22,17 @@ class TaskController {
         })
     }
 
+    var mockTasks: [Task] {
+        let taskOne = Task(name: "Get Groceries", notes: "Milk, Bread", date: NSDate().dateByAddingTimeInterval(259200), isComplete: false)
+        let taskTwo = Task(name: "Get Dry Cleaning", notes: "Extra Starch", date: nil, isComplete: true)
+        let taskThree = Task(name: "Go to the Pub", notes: "", date: NSDate().dateByAddingTimeInterval(0), isComplete: false)
+        return [taskOne, taskTwo, taskThree]
+    }
+    
+    init() {
+        self.tasksArray = self.mockTasks
+    }
+    
     func addTask (task:Task) {
         tasksArray.append(task)
     }
