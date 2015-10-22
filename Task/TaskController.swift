@@ -10,15 +10,15 @@ import Foundation
 
 class TaskController {
     static let sharedInstance = TaskController()
-    var tasksArray = [Task]
+    var tasksArray = [Task]()
     var completedTasksArray: [Task] {
-        tasksArray.filter( {(task: Task) -> Bool in
-            return task.isComplete
+        return tasksArray.filter( {(task: Task) -> Bool in
+        return task.isComplete
         })
     }
         var incompleteTasksArray: [Task] {
-            tasksArray.filter( {(task: Task) -> Bool in
-                return !task.isComplete
+            return tasksArray.filter( {(task: Task) -> Bool in
+            return !task.isComplete
         })
     }
 
@@ -39,7 +39,7 @@ class TaskController {
 
     func removeTask (task: Task) {
         let index = tasksArray.indexOf(task)
-        self.tasksArray.removeAtIndex(index)
+        self.tasksArray.removeAtIndex(index!)
     }
 
 }
