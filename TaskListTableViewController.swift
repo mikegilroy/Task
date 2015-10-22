@@ -10,6 +10,7 @@ import UIKit
 import Foundation
 
 class TaskListTableViewController: UITableViewController {
+    
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("taskCell", forIndexPath: indexPath)
         let currentTask = TaskController.sharedInstance.tasksArray[indexPath.row]
