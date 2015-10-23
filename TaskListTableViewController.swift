@@ -21,4 +21,15 @@ class TaskListTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return TaskController.sharedInstance.tasksArray.count
     }
+
+    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        
+        if editingStyle == .Delete {
+            TaskController.sharedInstance.tasksArray.removeAtIndex(indexPath.row)
+            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
+        }
+        
+    }
+    
 }
+
