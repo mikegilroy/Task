@@ -14,6 +14,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <gestureRecognizers/>
                         <sections>
                             <tableViewSection headerTitle="Name" id="971-pp-jN5">
                                 <cells>
@@ -102,15 +103,33 @@
                         <connections>
                             <outlet property="dataSource" destination="6Bj-ae-0e1" id="AFO-zP-Q07"/>
                             <outlet property="delegate" destination="6Bj-ae-0e1" id="JU9-Ej-V4a"/>
+                            <outletCollection property="gestureRecognizers" destination="hXZ-dn-6iv" appends="YES" id="tPJ-88-1FD"/>
                         </connections>
                     </tableView>
                     <connections>
+                        <outlet property="dueDatePicker" destination="HGf-PK-gM7" id="BbC-cL-pJQ"/>
                         <outlet property="dueTextField" destination="gPJ-b0-9XH" id="MZ6-cA-IBR"/>
                         <outlet property="nameTextField" destination="CFn-HS-0Js" id="2XZ-Yk-aaV"/>
                         <outlet property="notesTextView" destination="qPN-Gd-ByS" id="Uvb-h9-2of"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="js5-dE-HTK" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" id="HGf-PK-gM7">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="216"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <animations/>
+                    <date key="date" timeIntervalSinceReferenceDate="467327997.81142598">
+                        <!--2015-10-23 21:19:57 +0000-->
+                    </date>
+                    <connections>
+                        <action selector="datePickerValueChanged:" destination="6Bj-ae-0e1" eventType="valueChanged" id="rbO-NG-KE6"/>
+                    </connections>
+                </datePicker>
+                <tapGestureRecognizer id="hXZ-dn-6iv">
+                    <connections>
+                        <action selector="userTappedView:" destination="6Bj-ae-0e1" id="bhj-6H-RHV"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1726" y="349"/>
         </scene>
