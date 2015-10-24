@@ -30,6 +30,18 @@ class TaskDetailTableViewController: UITableViewController, UITextFieldDelegate 
         notesTextView.resignFirstResponder()
     }
 
+    
+    @IBAction func saveButtonTapped(sender: AnyObject) {
+        let notes = notesTextView.text
+        let date = dueDatePicker.date
+        let name = nameTextField.text
+        self.task = Task(name: name!, notes: notes, date: date, isComplete: false)
+        TaskController.sharedInstance.addTask(self.task!)
+        TaskController.sharedInstance.saveToPersistentStorage()
+        self.navigationController?.popToRootViewControllerAnimated(true)
+    }
+    
+    
     func updateWithTasks (task: Task) {
       self.task = task
         
@@ -50,6 +62,10 @@ class TaskDetailTableViewController: UITableViewController, UITextFieldDelegate 
     
     override func viewDidLoad() {
         dueTextField.inputView = dueDatePicker
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        navigationController?.setToolbarHidden(false, animated: true)
     }
     
 }

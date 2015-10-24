@@ -36,12 +36,12 @@ class TaskController {
         loadFromPersistentStorage()
     }
     
-    func addTask (task:Task) {
+    func addTask(task: Task) {
         tasksArray.append(task)
         saveToPersistentStorage()
     }
 
-    func removeTask (task: Task) {
+    func removeTask(task: Task) {
         let index = tasksArray.indexOf(task)
         self.tasksArray.removeAtIndex(index!)
         saveToPersistentStorage()

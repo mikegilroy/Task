@@ -56,4 +56,8 @@ class TaskListTableViewController: UITableViewController, ButtonTableViewCellDel
             }
         }
     }
+    
+    override func viewWillAppear(animated: Bool) {
+        tableView.reloadData()
+    }
 }
