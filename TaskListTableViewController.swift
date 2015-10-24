@@ -40,6 +40,7 @@ class TaskListTableViewController: UITableViewController, ButtonTableViewCellDel
         if editingStyle == .Delete {
             TaskController.sharedInstance.tasksArray.removeAtIndex(indexPath.row)
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
+            TaskController.sharedInstance.saveToPersistentStorage()
         }
         
     }
