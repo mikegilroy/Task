@@ -9,11 +9,24 @@
 import UIKit
 import Foundation
 
-class TaskListTableViewController: UITableViewController {
+class TaskListTableViewController: UITableViewController, ButtonTableViewCellDelegate {
+    
+    func buttonCellButtonTapped(sender: ButtonTableViewCell) {
+        guard let indexPath = tableView.indexPathForCell(sender) else {return}
+        let task = TaskController.sharedInstance.tasksArray[indexPath.row]
+        if task.isComplete {
+            task.isComplete = false
+        } else {
+            task.isComplete = true
+        }
+        TaskController.sharedInstance.saveToPersistentStorage()
+        tableView.reloadData()
+    }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("taskCell", forIndexPath: indexPath) as! ButtonTableViewCell
         let currentTask = TaskController.sharedInstance.tasksArray[indexPath.row]
+        cell.delegate = self
         cell.updateWithTask(currentTask)
         return cell
     }
@@ -44,5 +57,3 @@ class TaskListTableViewController: UITableViewController {
         }
     }
 }
-
-

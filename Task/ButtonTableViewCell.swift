@@ -9,12 +9,16 @@
 import UIKit
 
 class ButtonTableViewCell: UITableViewCell {
-
+    
     @IBOutlet weak var primaryLabel: UILabel!
     @IBOutlet weak var button: UIButton!
     
-    @IBAction func buttonTapped(sender: UIButton) {
+    var delegate: ButtonTableViewCellDelegate?
     
+    @IBAction func buttonTapped(sender: UIButton) {
+        
+        delegate?.buttonCellButtonTapped(self)
+        
     }
     
     func updateButton (isComplete: Bool) {
@@ -29,14 +33,19 @@ class ButtonTableViewCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
     }
-
+    
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
+        
         // Configure the view for the selected state
     }
-
+    
 }
+
+protocol ButtonTableViewCellDelegate {
+    func buttonCellButtonTapped(sender: ButtonTableViewCell)
+}
+
 
 extension ButtonTableViewCell {
     func updateWithTask (task: Task) {
