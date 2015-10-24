@@ -16,6 +16,7 @@ class TaskDetailTableViewController: UITableViewController, UITextFieldDelegate 
     @IBOutlet var dueDatePicker: UIDatePicker!
     
     var dueDateValue: String?
+    var task: Task?
     
     @IBAction func datePickerValueChanged(sender: UIDatePicker) {
     let date = sender.date
@@ -30,9 +31,18 @@ class TaskDetailTableViewController: UITableViewController, UITextFieldDelegate 
     }
 
     func updateWithTasks (task: Task) {
+      self.task = task
+        
+        title = task.name
         nameTextField.text = task.name
-        dueTextField.text = task.date?.stringValue()
-        notesTextView.text = task.notes
+        
+        if let due = task.date {
+            dueTextField.text = due.stringValue()
+        }
+    
+        if let notes = task.notes {
+            notesTextView.text = notes
+        }
     }
     
     func textFieldDidBeginEditing(textField: UITextField) {

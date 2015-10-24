@@ -17,11 +17,11 @@ class TaskListTableViewController: UITableViewController {
         cell.textLabel?.text = currentTask.name
         return cell
     }
-
+    
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return TaskController.sharedInstance.tasksArray.count
     }
-
+    
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         
         if editingStyle == .Delete {
@@ -30,6 +30,19 @@ class TaskListTableViewController: UITableViewController {
         }
         
     }
-    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "editTaskDetail" {
+            if let selectedIndexPath = tableView.indexPathForSelectedRow {
+                let task = TaskController.sharedInstance.tasksArray[selectedIndexPath.row]
+                
+                if let taskDetailScene = segue.destinationViewController as? TaskDetailTableViewController {
+                    
+                    _ = taskDetailScene.view
+                    taskDetailScene.updateWithTasks(task)
+                }
+            }
+        }
+    }
 }
+
 

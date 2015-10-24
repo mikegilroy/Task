@@ -153,7 +153,7 @@
                                 </tableViewCellContentView>
                                 <animations/>
                                 <connections>
-                                    <segue destination="6Bj-ae-0e1" kind="show" id="JCZ-aX-yOB"/>
+                                    <segue destination="6Bj-ae-0e1" kind="show" identifier="editTaskDetail" id="JCZ-aX-yOB"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -165,7 +165,7 @@
                     <navigationItem key="navigationItem" id="Ip8-eT-HbV">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="1D9-0l-zrF">
                             <connections>
-                                <segue destination="6Bj-ae-0e1" kind="show" id="dge-FW-hEf"/>
+                                <segue destination="6Bj-ae-0e1" kind="show" identifier="addTaskDetail" id="dge-FW-hEf"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
