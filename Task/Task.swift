@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Task: NSCoding, Equatable {
+class Task: NSObject, NSCoding {
     var name: String
     var notes: String?
     var date: NSDate?
@@ -20,14 +20,14 @@ class Task: NSCoding, Equatable {
         static let dateKey = "date"
         static let isCompleteKey = "isComplete"
     }
-    
+
     init(name: String, notes: String?, date: NSDate?, isComplete: Bool) {
         self.name = name
         self.notes = notes
         self.date = date
         self.isComplete = isComplete
     }
-    
+
     @objc required convenience init?(coder aDecoder: NSCoder) {
         let name = aDecoder.decodeObjectForKey(PropertyKey.nameKey) as! String
         let notes = aDecoder.decodeObjectForKey(PropertyKey.notesKey) as? String
@@ -42,10 +42,5 @@ class Task: NSCoding, Equatable {
         aCoder.encodeObject(date, forKey: PropertyKey.dateKey)
         aCoder.encodeObject(isComplete, forKey: PropertyKey.isCompleteKey)
     }
-
-}
-
-    func == (lhs: Task, rhs: Task) -> Bool {
-    return lhs.name == rhs.name
     
 }
