@@ -12,9 +12,9 @@ import Foundation
 class TaskListTableViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("taskCell", forIndexPath: indexPath)
+        let cell = tableView.dequeueReusableCellWithIdentifier("taskCell", forIndexPath: indexPath) as! ButtonTableViewCell
         let currentTask = TaskController.sharedInstance.tasksArray[indexPath.row]
-        cell.textLabel?.text = currentTask.name
+        cell.updateWithTask(currentTask)
         return cell
     }
     

@@ -143,16 +143,45 @@
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="taskCell" id="li4-7n-aoj">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="taskCell" id="li4-7n-aoj" customClass="ButtonTableViewCell" customModule="Task" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="92" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="li4-7n-aoj" id="Zd1-Ja-Cyd">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wJD-QE-aGx">
+                                            <rect key="frame" x="8" y="11" width="42" height="21"/>
+                                            <animations/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4v6-Ju-aca">
+                                            <rect key="frame" x="557" y="4" width="35" height="35"/>
+                                            <animations/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="35" id="zwh-pp-0ba"/>
+                                            </constraints>
+                                            <state key="normal" image="incomplete"/>
+                                            <connections>
+                                                <action selector="buttonTapped:" destination="li4-7n-aoj" eventType="touchUpInside" id="y78-Za-cZd"/>
+                                            </connections>
+                                        </button>
+                                    </subviews>
                                     <animations/>
+                                    <constraints>
+                                        <constraint firstAttribute="leadingMargin" secondItem="wJD-QE-aGx" secondAttribute="leading" id="Gy9-Lb-jW9"/>
+                                        <constraint firstItem="4v6-Ju-aca" firstAttribute="top" secondItem="Zd1-Ja-Cyd" secondAttribute="topMargin" constant="-4" id="S4p-HT-JTF"/>
+                                        <constraint firstItem="wJD-QE-aGx" firstAttribute="centerY" secondItem="Zd1-Ja-Cyd" secondAttribute="centerY" id="Wyo-JY-rD6"/>
+                                        <constraint firstItem="4v6-Ju-aca" firstAttribute="trailing" secondItem="Zd1-Ja-Cyd" secondAttribute="trailingMargin" id="hZc-UU-fgR"/>
+                                        <constraint firstItem="4v6-Ju-aca" firstAttribute="centerY" secondItem="wJD-QE-aGx" secondAttribute="centerY" id="lru-lg-KJi"/>
+                                    </constraints>
                                 </tableViewCellContentView>
                                 <animations/>
                                 <connections>
+                                    <outlet property="button" destination="4v6-Ju-aca" id="Uic-Lt-Raw"/>
+                                    <outlet property="primaryLabel" destination="wJD-QE-aGx" id="Z96-qX-sqz"/>
                                     <segue destination="6Bj-ae-0e1" kind="show" identifier="editTaskDetail" id="JCZ-aX-yOB"/>
                                 </connections>
                             </tableViewCell>
@@ -194,6 +223,9 @@
             <point key="canvasLocation" x="217" y="349"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="incomplete" width="512" height="512"/>
+    </resources>
     <inferredMetricsTieBreakers>
         <segue reference="dge-FW-hEf"/>
     </inferredMetricsTieBreakers>

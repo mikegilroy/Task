@@ -18,6 +18,7 @@
 		97C9A5601BD98DC70076CB2D /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97C9A55F1BD98DC70076CB2D /* Task.swift */; };
 		97C9A5621BD995710076CB2D /* TaskController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97C9A5611BD995710076CB2D /* TaskController.swift */; };
 		97EE403A1BDADAD6003B7856 /* DateHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97EE40391BDADAD6003B7856 /* DateHelper.swift */; };
+		97EE403C1BDB0C5C003B7856 /* ButtonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97EE403B1BDB0C5C003B7856 /* ButtonTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +56,7 @@
 		97C9A55F1BD98DC70076CB2D /* Task.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
 		97C9A5611BD995710076CB2D /* TaskController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskController.swift; sourceTree = "<group>"; };
 		97EE40391BDADAD6003B7856 /* DateHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateHelper.swift; sourceTree = "<group>"; };
+		97EE403B1BDB0C5C003B7856 /* ButtonTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,6 +109,7 @@
 			children = (
 				68D78A251BD6C26500509A87 /* AppDelegate.swift */,
 				97C9A55B1BD98CF70076CB2D /* TaskListTableViewController.swift */,
+				97EE403B1BDB0C5C003B7856 /* ButtonTableViewCell.swift */,
 				97C9A55D1BD98D760076CB2D /* TaskDetailTableViewController.swift */,
 				68D78A291BD6C26500509A87 /* Main.storyboard */,
 				97EE40391BDADAD6003B7856 /* DateHelper.swift */,
@@ -272,6 +275,7 @@
 				68D78A261BD6C26500509A87 /* AppDelegate.swift in Sources */,
 				97EE403A1BDADAD6003B7856 /* DateHelper.swift in Sources */,
 				97C9A5621BD995710076CB2D /* TaskController.swift in Sources */,
+				97EE403C1BDB0C5C003B7856 /* ButtonTableViewCell.swift in Sources */,
 				97C9A55E1BD98D760076CB2D /* TaskDetailTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
