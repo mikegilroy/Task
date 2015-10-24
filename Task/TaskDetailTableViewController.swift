@@ -32,6 +32,9 @@ class TaskDetailTableViewController: UITableViewController, UITextFieldDelegate 
 
     
     @IBAction func saveButtonTapped(sender: AnyObject) {
+        if let task = self.task {
+            TaskController.sharedInstance.removeTask(task)
+        }
         let notes = notesTextView.text
         let date = dueDatePicker.date
         let name = nameTextField.text

@@ -53,6 +53,7 @@ class TaskListTableViewController: UITableViewController, ButtonTableViewCellDel
                     
                     _ = taskDetailScene.view
                     taskDetailScene.updateWithTasks(task)
+                    taskDetailScene.task = task
                 }
             }
         }
