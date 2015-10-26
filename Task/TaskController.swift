@@ -23,11 +23,27 @@ class TaskController {
         }
     }
     var completedTasksArray: [Task] {
-        return tasksArray.filter({$0.isComplete.boolValue})
-
+        let request = NSFetchRequest(entityName: "Task")
+        let resultPredicate = NSPredicate (format: "isComplete == %@", true)
+        request.predicate = resultPredicate
+        let moc = Stack.sharedStack.managedObjectContext
+        do {
+            return try moc.executeFetchRequest(request) as! [Task]
+        } catch {
+            return []
+        }
     }
-        var incompleteTasksArray: [Task] {
-            return tasksArray.filter({!$0.isComplete.boolValue})
+
+    var incompleteTasksArray: [Task] {
+        let request = NSFetchRequest(entityName: "Task")
+        let resultPredicate = NSPredicate (format: "isComplete == %@", false)
+        request.predicate = resultPredicate
+        let moc = Stack.sharedStack.managedObjectContext
+        do {
+            return try moc.executeFetchRequest(request) as! [Task]
+        } catch {
+            return []
+        }
     }
 
     func addTask(task: Task) {
@@ -43,18 +59,18 @@ class TaskController {
 
     func saveToPersistentStorage () {
         let moc = Stack.sharedStack.managedObjectContext
-            do {
-                try moc.save()
-            } catch {
-                print("error saving")
-            }
+        do {
+            try moc.save()
+        } catch {
+            print("error saving")
         }
-    
+    }
+
     func filePath(key: String) -> String {
         let directorySearchResults = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DocumentDirectory,NSSearchPathDomainMask.AllDomainsMask, true)
         let documentsPath: AnyObject = directorySearchResults[0]
         let entriesPath = documentsPath.stringByAppendingString("/\(key).plist")
-        
+
         return entriesPath
     }
 }
