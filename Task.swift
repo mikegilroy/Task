@@ -20,15 +20,7 @@ class Task: NSManagedObject {
         self.notes = notes
         self.date = date
         self.isComplete = isComplete
-        
+
     }
-
-
-
-//        @NSManaged var name: String
-//        @NSManaged var notes: String?
-//        @NSManaged var date: NSDate?
-//        @NSManaged var isComplete: NSNumber
-
 
 }

@@ -13,8 +13,8 @@ class TaskListTableViewController: UITableViewController, ButtonTableViewCellDel
     
     func buttonCellButtonTapped(sender: ButtonTableViewCell) {
         guard let indexPath = tableView.indexPathForCell(sender) else {return}
-        let task = TaskController.sharedInstance.tasksArray[indexPath.row]
-        if task.isComplete {
+        let task = TaskController.sharedInstance.incompleteTasksArray[indexPath.row]
+        if task.isComplete.boolValue {
             task.isComplete = false
         } else {
             task.isComplete = true
@@ -25,29 +25,31 @@ class TaskListTableViewController: UITableViewController, ButtonTableViewCellDel
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("taskCell", forIndexPath: indexPath) as! ButtonTableViewCell
-        let currentTask = TaskController.sharedInstance.tasksArray[indexPath.row]
+        let currentTask = TaskController.sharedInstance.incompleteTasksArray[indexPath.row]
         cell.delegate = self
         cell.updateWithTask(currentTask)
         return cell
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return TaskController.sharedInstance.tasksArray.count
+        return TaskController.sharedInstance.incompleteTasksArray.count
     }
     
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         
         if editingStyle == .Delete {
-            TaskController.sharedInstance.tasksArray.removeAtIndex(indexPath.row)
+            let task = TaskController.sharedInstance.incompleteTasksArray[indexPath.row]
+            TaskController.sharedInstance.removeTask(task)
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
             TaskController.sharedInstance.saveToPersistentStorage()
         }
         
     }
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "editTaskDetail" {
             if let selectedIndexPath = tableView.indexPathForSelectedRow {
-                let task = TaskController.sharedInstance.tasksArray[selectedIndexPath.row]
+                let task = TaskController.sharedInstance.incompleteTasksArray[selectedIndexPath.row]
                 
                 if let taskDetailScene = segue.destinationViewController as? TaskDetailTableViewController {
                     
